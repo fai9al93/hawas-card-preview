@@ -119,6 +119,45 @@
   .hc.r:hover .sheen, .hc.g:hover .sheen { opacity: 1; }
   .compact .foot, .compact .roaster, .compact .lock span.w, .compact .type .txt, .compact .rt small, .compact .brew .w { display: none !important; }
 
+  /* ---------- before / after ---------- */
+  .compare { margin-top: 16px; }
+  .pairs { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .pair { background: var(--soft); border-radius: 18px; padding: 14px 10px 12px; display: flex; flex-direction: column; gap: 10px; }
+  .pair h4 { margin: 0; text-align: center; font-size: 14px; }
+  .pair .two { display: flex; justify-content: center; gap: 12px; align-items: flex-start; }
+  .pair .two .slot small.now { color: var(--ink-3); }
+  .pair .two .slot small.new { color: var(--gold-d); }
+  /* current card, rebuilt from ProductCard.swift metrics */
+  .cc { width: 280px; height: 391px; border-radius: 24px; position: relative; overflow: hidden; font-family: "Cairo", system-ui, sans-serif; }
+  .cc.c { background: #C2A07B; border: 1px solid #8B6B4A; color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,.08); }
+  .cc.r { background: linear-gradient(150deg,#5B21B6,#9333EA 30%,#D946EF 58%,#EC4899 80%,#F472B6); border: 2px solid #5B21B6; color: #fff; box-shadow: 0 6px 12px rgba(217,70,239,.25); }
+  .cc.g { background: linear-gradient(160deg,#FFE8A0 0%,#FFD24D 26%,#FFF0C2 42%,#FFFCF2 50%,#FFE69C 58%,#E8A82E 76%,#C9881C 100%); border: 3px solid #E8A82E; color: #111; box-shadow: 0 6px 14px rgba(232,168,46,.3); }
+  .cc .img { position: absolute; top: 0; left: 0; right: 0; height: 60%; background-size: cover; background-position: center; }
+  .cc .mk { position: absolute; top: 8px; width: 45px; height: 45px; border-radius: 50%; display: grid; place-items: center; z-index: 2; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  .cc .mk.rar { font-size: 18px; color: #fff; }
+  .cc.c .mk.rar { background: radial-gradient(circle at 35% 30%, #D9BC9A, #8B6B4A); }
+  .cc.r .mk.rar { background: radial-gradient(circle at 35% 30%, #C084FC, #6D28D9); }
+  .cc.g .mk.rar { background: radial-gradient(circle at 35% 30%, #FFE8A0, #E8A82E); }
+  .cc .mk.brw { background: linear-gradient(160deg, rgba(255,255,255,.82), rgba(255,255,255,.45)); color: rgba(0,0,0,.85); }
+  .cc .mk.brw .mask { width: 22px; height: 22px; }
+  .cc .chip { position: absolute; top: calc(60% - 32px); display: flex; align-items: center; gap: 4px; background: rgba(255,255,255,.9); color: #333; font-size: 9px; font-weight: 500; padding: 3px 7px 3px 3px; border-radius: 999px; z-index: 2; }
+  .cc .chip i { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg,#8B5E3C,#5A3A22); display: block; }
+  .cc .info { position: absolute; top: 60%; left: 0; right: 0; bottom: 0; padding: 18px 26px 0; display: flex; justify-content: space-between; gap: 8px; }
+  .cc .info .nm { font-size: 20px; font-weight: 700; line-height: 1.35; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+  .cc.g .info .nm, .cc.g .info .ro { text-shadow: 0 1px 2px rgba(255,255,255,.5); }
+  .cc .info .ro { font-size: 13px; opacity: .9; text-shadow: 0 1px 2px rgba(0,0,0,.25); margin-top: 2px; }
+  .cc .info .lk { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11px; font-weight: 800; opacity: .8; flex: none; }
+  .cc .info .lk .logo { width: 20px; height: 22px; }
+  .cc .brow { position: absolute; left: 26px; right: 26px; bottom: 12px; height: 56px; display: flex; justify-content: space-between; align-items: center; }
+  .cc .rate { display: flex; align-items: baseline; gap: 6px; font-weight: 700; }
+  .cc .rate b { font: 700 26px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .06em; }
+  .cc .rate small { font-size: 16px; opacity: .8; }
+  .cc .rate em { font-style: normal; color: #FFD24D; font-size: 18px; }
+  .cc .bigseal { width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle at 35% 30%,#D23A3A,#8E1414 70%); box-shadow: 0 2px 6px rgba(0,0,0,.35); display: grid; place-items: center; }
+  .cc .bigseal::after { content: ""; width: 22px; height: 22px; border: 2.5px solid rgba(255,255,255,.35); border-radius: 5px; }
+  .cc .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; }
+  .cc.c .bar { background: #8B6B4A; } .cc.r .bar { background: linear-gradient(90deg,#5B21B6,#EC4899); } .cc.g .bar { background: linear-gradient(90deg,#C9881C,#FFE8A0,#C9881C); }
+
   /* phone: pinned card strip on top, controls scroll beneath (kept last so it wins) */
   .peek { display: none; }
   @media (max-width: 900px) {
@@ -137,6 +176,8 @@
   <h1>بطاقة «ب» · وزن الأبعاد</h1>
   <p class="lead">البطاقة مرسومة بمقاسها الأساسي في التطبيق (280 × 391) وتصغر كلها بنفس النسبة، زي ما يسوي التطبيق بالضبط. حرّك المؤشرات، وشوف أثرها على الندرات الثلاث وعلى المقاسات اللي تظهر فيها البطاقة. مرّر الماوس على النادرة والفاخرة تشوف اللمعة.</p>
 
+  <section class="box compare"><h2>قبل ← بعد</h2><p>نفس القهوة بالتصميم الحالي (مبني بنفس مقاسات الكود) وبالتصميم الجديد. أي تعديل في المؤشرات يطبّق على «الجديد» مباشرة.</p>
+    <div class="pairs" id="pairs"></div></section>
   <div class="peek" id="peek" aria-label="معاينة"></div>
   <div class="layout">
     <aside class="panel" id="panel">
@@ -247,8 +288,29 @@ function fit() {
     while (t.scrollWidth > t.clientWidth + 1 && f > base * .8) { f -= .25; row.style.fontSize = f + "px"; }
   });
 }
+function current(k, width) {
+  const en = S.lang === "en";
+  const d = en ? { ...D[k], ...E[k] } : D[k];
+  const sym = { c: "●", r: "◆", g: "★" }[k];
+  const side = en ? ["left", "right"] : ["right", "left"];
+  return `<div class="sc" style="width:${width}px;height:${Math.round(width * H / W)}px">
+  <div class="cc ${k}" dir="${en ? "ltr" : "rtl"}" style="position:absolute;top:0;left:0;transform-origin:top left;transform:scale(${width / W})">
+    <div class="img" style="background-image:url(${IMG[k]})"></div>
+    <span class="mk brw" style="${side[0]}:8px"><span class="mask ${D[k].brew[0]}"></span></span>
+    <span class="mk rar" style="${side[1]}:8px">${sym}</span>
+    <span class="chip" style="${side[0]}:8px"><i></i>${en ? "DISCOVERED BY " : "اكتشفها "}${d.who}</span>
+    <div class="info"><div><div class="nm">${d.name}</div><div class="ro">${d.roaster}</div></div>
+      <span class="lk"><span class="mask logo"></span>حواس</span></div>
+    <div class="brow"><span class="rate"><em>★</em><b>${D[k].rate}</b><small>(${D[k].n})</small></span>${S.seal ? `<span class="bigseal"></span>` : ""}</div>
+    <span class="bar"></span>
+  </div></div>`;
+}
 function render() {
   document.getElementById("rowRarity").innerHTML = ["c","r","g"].map(k => `<div class="slot">${card(k, 280)}<small>${D[k].label}</small></div>`).join("");
+  const cw = Math.min(190, Math.floor((Math.min(window.innerWidth, 700) - 32 - 36 - 12) / 2));
+  document.getElementById("pairs").innerHTML = ["c","r","g"].map(k => `<div class="pair"><h4>${D[k].label}</h4><div class="two">
+    <div class="slot">${current(k, cw)}<small class="now">الحالي</small></div>
+    <div class="slot">${card(k, cw, true)}<small class="new">الجديد</small></div></div></div>`).join("");
   const pw = Math.min(150, Math.floor((Math.min(window.innerWidth, 900) - 32 - 16) / 3));
   document.getElementById("peek").innerHTML = ["c","r","g"].map(k => card(k, pw, true)).join("");
   document.getElementById("rowSizes").innerHTML = [[175,"المجموعة 175"],[124,"الفيد 124"],[90,"مصغّرة 90"]].map(([w,l]) => `<div class="slot">${card(S.sizeR, w)}<small>${l}</small></div>`).join("");
